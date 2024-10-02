@@ -1,18 +1,19 @@
 
-
-
-//
-//  Nujud.swift
-//  t7project
-//
-//  Created by Raghad  on 26/03/1446 AH.
-//
-
 import SwiftUI
 
+struct NavigationItem {
+    let imageName: String
+    let destination: AnyView
+}
+
 struct Nujud: View {
+    var navigationItems: [NavigationItem] = [
+        NavigationItem(imageName: "yoga", destination: AnyView(Yoga())),
+        NavigationItem(imageName: "walking", destination: AnyView(Walking())),
+        NavigationItem(imageName: "stretch", destination: AnyView(Stretch()))
+    ]
+    
     var body: some View {
-        
         ZStack {
             // Full background color
             Color(hex: "0F133C") // Custom color using hex
@@ -23,7 +24,7 @@ struct Nujud: View {
                 CGPoint(x: 30, y: 100),
                 CGPoint(x: 100, y: 70),
                 CGPoint(x: 150, y: 120),
-                CGPoint(x: 250, y: 190), // النقطه القريبه للعنوان
+                CGPoint(x: 250, y: 190),
                 CGPoint(x: 150, y: 10),
                 CGPoint(x: 350, y: 30),
                 CGPoint(x: 200, y: 100),
@@ -44,66 +45,37 @@ struct Nujud: View {
                 CGPoint(x: 330, y: 150),
                 CGPoint(x: 300, y: 30)
             ]
-            
+
             // Circles in the top quarter of the screen
             ForEach(0..<positions.count, id: \.self) { index in
-                let size = CGFloat.random(in: 4...12) // Random sizes between 20 and 80
+                let size = CGFloat.random(in: 4...12) // Random sizes
                 let isTransparent = index % 3 == 0 // Make every third circle transparent
                 
                 Circle()
                     .fill(isTransparent ? Color.white.opacity(0.5) : Color.yellow) // Transparent or yellow
                     .frame(width: size, height: size) // Set size
                     .position(positions[index]) // Use predefined positions
-                
+            }
 
+            // VStack for links
+            VStack {
+                Text("التمارين الحركية")
+                    .foregroundColor(.white)
+                    .font(.system(size: 40))
 
-                VStack{
-                 
-                    
-                    NavigationLink(destination: Physical()) {
-                        Image("yoga")
+                ForEach(navigationItems, id: \.imageName) { item in
+                    NavigationLink(destination: item.destination) {
+                        Image(item.imageName)
                             .resizable()
                             .frame(width: 180, height: 180)
-                        .padding(.bottom, 280.0)  }
-                }
-                
-                VStack{
-                    
-                  
-                    
-                    NavigationLink(destination: Walking()) {
-                        Image("2")
-                            .resizable()
-                            .frame(width: 180, height: 180)
-                            .padding(.top, 100.0)
                     }
-                }
-                
-                VStack{
-                    
-               
-                    NavigationLink(destination: Stretch()) {
-                        Image("3")
-                            .resizable()
-                            .frame(width: 180, height: 180)
-                            .padding(.top, 400.0)
-                    }
-                }
-
-                VStack{
-                    Text("التمارين الحركية")
-                        .foregroundColor(.white)
-                        .font(.system(size: 40))
-                        .padding(.bottom,585)
+                  //  .padding(.bottom, 0) // Adjust padding as necessary
                 }
             }
-            .padding(.top)
         }
         .edgesIgnoringSafeArea(.all) // Fill the entire screen
     }
 }
-
-
 
 #Preview {
     Nujud()

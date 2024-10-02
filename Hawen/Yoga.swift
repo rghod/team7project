@@ -1,27 +1,22 @@
 
-
-//
-//  Physical.swift
-//  t7project
-//
-//  Created by Nujud Abdullah on 27/03/1446 AH.
-//
-
 import SwiftUI
 
-struct Physical: View {
+struct Yoga: View {
     var body: some View {
         ZStack {
+            
+          
+                
             // Full background color
             Color(hex: "0F133C") // Custom color using hex
             
-            // Predefined positions for circles with closer spacing and lower placement
+            // Predefined positions for circles
             let positions = [
                 CGPoint(x: 50, y: 10),
                 CGPoint(x: 30, y: 100),
                 CGPoint(x: 100, y: 70),
                 CGPoint(x: 150, y: 120),
-                CGPoint(x: 250, y: 190), // النقطه القريبه للعنوان
+                CGPoint(x: 250, y: 190),
                 CGPoint(x: 150, y: 10),
                 CGPoint(x: 350, y: 30),
                 CGPoint(x: 200, y: 100),
@@ -43,116 +38,63 @@ struct Physical: View {
                 CGPoint(x: 300, y: 30)
             ]
             
-            // Circles in the top quarter of the screen
+
+            // Circles in the background
             ForEach(0..<positions.count, id: \.self) { index in
-                let size = CGFloat.random(in: 4...12) // Random sizes between 20 and 80
+                let size = CGFloat.random(in: 4...12) // Random sizes
                 let isTransparent = index % 3 == 0 // Make every third circle transparent
                 
                 Circle()
                     .fill(isTransparent ? Color.white.opacity(0.5) : Color.yellow) // Transparent or yellow
                     .frame(width: size, height: size) // Set size
                     .position(positions[index]) // Use predefined positions
-                
-                
-                    Text("تمارين اليوغا")
-                        .foregroundColor(.white)
-                        .font(.system(size: 40))
-                        .padding(.bottom,585)
-                
-                VStack{
-                    
-                    HStack {
-                        
-                        Text("الصوت الأول")
-                            .foregroundColor(.white)
-                            .font(.system(size: 30))
-                            .padding(.leading, 90.0)
-                            .padding(.top, 50.0)
-                        
-                        Text("15 دقائق")
-                            .foregroundColor(.white)
-                            .font(.system(size: 15))
-                            .padding(.trailing, 10.0)
-                            .padding(.top, 120.0)
-                        
-                        Image(systemName: "headphones.circle.fill")
-                            .resizable()
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 75, height: 75) // Set the desired frame size
-                            .scaledToFit()
-                            .foregroundStyle(.white)
-                            .frame(width: 50, height: 50)
-                            .padding(.leading, 100.0)
-                            .padding(.top, 50.0)
-                    
-                    
-                    
-                    
-                    
-                }
-                     
-                    HStack{
-                        
-                        Text("الصوت الثاني")
-                            .foregroundColor(.white)
-                            .font(.system(size: 30))
-                            .padding(.leading, 80.0)
-                            .padding(.top, 50.0)
-
-                            
-                        Text("15 دقائق")
-                            .foregroundColor(.white)
-                            .font(.system(size: 15))
-                            .padding(.trailing, 10.0)
-                            .padding(.top, 120.0)
-                       
-                        Image(systemName: "headphones.circle.fill")
-                            .resizable()
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 75, height: 75) // Set the desired frame size
-                            .scaledToFit()
-                            .foregroundStyle(.white)
-                            .frame(width: 50, height: 50)
-                            .padding(.leading, 100.0)
-                            .padding(.top, 50.0)
-                        
-                    }
-                    
-                    HStack{
-                        
-                        Text("الصوت الثالث")
-                            .foregroundColor(.white)
-                            .font(.system(size: 30))
-                            .padding(.leading, 6.0 )
-                            .padding(.top, 50.0)
-                        
-                        Text("7 دقائق")
-                            .foregroundColor(.white)
-                            .font(.system(size: 15))
-                            .padding(.trailing, 10.0)
-                            .padding(.top, 120.0)
-                        
-                        Image(systemName: "headphones.circle.fill")
-                            .foregroundStyle(.white)
-                            .frame(width: 50, height: 50)
-                            .padding(.leading, 100.0)
-                            .padding(.top, 50.0)
-                    }
-                 
-                }
+                Text("تمارين اليوغا")
+                    .foregroundColor(.white)
+                    .font(.system(size: 40))
+                    .padding(.bottom, 580)
             }
-            .padding(.top)
+          
+            
+            
+            VStack {
+             
+                
+                // Audio options
+                audioOption(title: "الصوت الأول", duration: "٣٠ دقائق") // First Audio
+                audioOption(title: "الصوت الثاني", duration: "١٥ دقائق") // Second Audio
+                audioOption(title: "الصوت الثالث", duration: "٧ دقائق") // Third Audio
+            }
+            .padding() // Adjust the top padding as necessary
         }
         .edgesIgnoringSafeArea(.all) // Fill the entire screen
-        
+    }
+
+    // Helper function for audio options
+    private func audioOption(title: String, duration: String) -> some View {
+        HStack {
+            Text(title)
+                .foregroundColor(.white)
+                .font(.system(size: 30))
+                .padding(.leading, 20)
+            
+            Spacer() // Use Spacer to push elements to the sides
+            
+            Text(duration)
+                .foregroundColor(.white)
+                .font(.system(size: 15))
+                .padding(.trailing, 10)
+
+            Image(systemName: "headphones.circle.fill")
+                .resizable()
+                .foregroundColor(.white)
+                .frame(width: 50, height: 50)
+                .scaledToFit()
+                .padding(.leading, 20)
+        }
+        .padding(.vertical, 10) // Vertical padding for each audio option
     }
 }
 
-
-    
-
 #Preview {
-    Physical()
+    Yoga()
 }
