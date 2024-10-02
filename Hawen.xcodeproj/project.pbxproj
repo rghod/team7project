@@ -11,6 +11,19 @@
 		8C4279C72CAD75E300B686BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279C62CAD75E300B686BF /* ContentView.swift */; };
 		8C4279C92CAD75E300B686BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4279C82CAD75E300B686BF /* Assets.xcassets */; };
 		8C4279CC2CAD75E300B686BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4279CB2CAD75E300B686BF /* Preview Assets.xcassets */; };
+		8C4279D32CAD760100B686BF /* Maram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279D22CAD760100B686BF /* Maram.swift */; };
+		8C4279D52CAD760F00B686BF /* Nujud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279D42CAD760F00B686BF /* Nujud.swift */; };
+		8C4279D72CAD762600B686BF /* Walking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279D62CAD762600B686BF /* Walking.swift */; };
+		8C4279D92CAD763500B686BF /* midetation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279D82CAD763500B686BF /* midetation.swift */; };
+		8C4279DB2CAD764100B686BF /* Sleep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279DA2CAD764100B686BF /* Sleep1.swift */; };
+		8C4279DD2CAD764F00B686BF /* Sleep2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279DC2CAD764F00B686BF /* Sleep2.swift */; };
+		8C4279DF2CAD765B00B686BF /* Sleep3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279DE2CAD765B00B686BF /* Sleep3.swift */; };
+		8C4279E12CAD766A00B686BF /* TimeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279E02CAD766A00B686BF /* TimeSelection.swift */; };
+		8C4279E32CAD768100B686BF /* Stretch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279E22CAD768100B686BF /* Stretch.swift */; };
+		8C4279E52CAD768F00B686BF /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279E42CAD768F00B686BF /* Splash.swift */; };
+		8C4279E72CAD769900B686BF /* Yoga.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279E62CAD769900B686BF /* Yoga.swift */; };
+		8C4279E92CAD76AB00B686BF /* Mashael.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279E82CAD76AB00B686BF /* Mashael.swift */; };
+		8C4279EB2CAD76BA00B686BF /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4279EA2CAD76BA00B686BF /* Background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +32,19 @@
 		8C4279C62CAD75E300B686BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8C4279C82CAD75E300B686BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C4279CB2CAD75E300B686BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8C4279D22CAD760100B686BF /* Maram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maram.swift; sourceTree = "<group>"; };
+		8C4279D42CAD760F00B686BF /* Nujud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nujud.swift; sourceTree = "<group>"; };
+		8C4279D62CAD762600B686BF /* Walking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walking.swift; sourceTree = "<group>"; };
+		8C4279D82CAD763500B686BF /* midetation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = midetation.swift; sourceTree = "<group>"; };
+		8C4279DA2CAD764100B686BF /* Sleep1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep1.swift; sourceTree = "<group>"; };
+		8C4279DC2CAD764F00B686BF /* Sleep2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep2.swift; sourceTree = "<group>"; };
+		8C4279DE2CAD765B00B686BF /* Sleep3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep3.swift; sourceTree = "<group>"; };
+		8C4279E02CAD766A00B686BF /* TimeSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelection.swift; sourceTree = "<group>"; };
+		8C4279E22CAD768100B686BF /* Stretch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stretch.swift; sourceTree = "<group>"; };
+		8C4279E42CAD768F00B686BF /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		8C4279E62CAD769900B686BF /* Yoga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yoga.swift; sourceTree = "<group>"; };
+		8C4279E82CAD76AB00B686BF /* Mashael.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mashael.swift; sourceTree = "<group>"; };
+		8C4279EA2CAD76BA00B686BF /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +79,19 @@
 			children = (
 				8C4279C42CAD75E300B686BF /* HawenApp.swift */,
 				8C4279C62CAD75E300B686BF /* ContentView.swift */,
+				8C4279D22CAD760100B686BF /* Maram.swift */,
+				8C4279D42CAD760F00B686BF /* Nujud.swift */,
+				8C4279D62CAD762600B686BF /* Walking.swift */,
+				8C4279D82CAD763500B686BF /* midetation.swift */,
+				8C4279DA2CAD764100B686BF /* Sleep1.swift */,
+				8C4279DC2CAD764F00B686BF /* Sleep2.swift */,
+				8C4279DE2CAD765B00B686BF /* Sleep3.swift */,
+				8C4279E02CAD766A00B686BF /* TimeSelection.swift */,
+				8C4279E22CAD768100B686BF /* Stretch.swift */,
+				8C4279E42CAD768F00B686BF /* Splash.swift */,
+				8C4279E62CAD769900B686BF /* Yoga.swift */,
+				8C4279E82CAD76AB00B686BF /* Mashael.swift */,
+				8C4279EA2CAD76BA00B686BF /* Background.swift */,
 				8C4279C82CAD75E300B686BF /* Assets.xcassets */,
 				8C4279CA2CAD75E300B686BF /* Preview Content */,
 			);
@@ -137,8 +176,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C4279DF2CAD765B00B686BF /* Sleep3.swift in Sources */,
+				8C4279E92CAD76AB00B686BF /* Mashael.swift in Sources */,
+				8C4279E72CAD769900B686BF /* Yoga.swift in Sources */,
+				8C4279E12CAD766A00B686BF /* TimeSelection.swift in Sources */,
+				8C4279D52CAD760F00B686BF /* Nujud.swift in Sources */,
+				8C4279E32CAD768100B686BF /* Stretch.swift in Sources */,
+				8C4279D92CAD763500B686BF /* midetation.swift in Sources */,
+				8C4279DD2CAD764F00B686BF /* Sleep2.swift in Sources */,
+				8C4279DB2CAD764100B686BF /* Sleep1.swift in Sources */,
 				8C4279C72CAD75E300B686BF /* ContentView.swift in Sources */,
 				8C4279C52CAD75E300B686BF /* HawenApp.swift in Sources */,
+				8C4279D72CAD762600B686BF /* Walking.swift in Sources */,
+				8C4279E52CAD768F00B686BF /* Splash.swift in Sources */,
+				8C4279D32CAD760100B686BF /* Maram.swift in Sources */,
+				8C4279EB2CAD76BA00B686BF /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
