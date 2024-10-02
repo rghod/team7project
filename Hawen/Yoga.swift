@@ -1,12 +1,8 @@
-
 import SwiftUI
 
 struct Yoga: View {
     var body: some View {
         ZStack {
-            
-          
-                
             // Full background color
             Color(hex: "0F133C") // Custom color using hex
             
@@ -37,7 +33,6 @@ struct Yoga: View {
                 CGPoint(x: 330, y: 150),
                 CGPoint(x: 300, y: 30)
             ]
-            
 
             // Circles in the background
             ForEach(0..<positions.count, id: \.self) { index in
@@ -53,18 +48,16 @@ struct Yoga: View {
                     .font(.system(size: 40))
                     .padding(.bottom, 580)
             }
-          
-            
-            
+
             VStack {
-             
-                
+            
+
                 // Audio options
                 audioOption(title: "الصوت الأول", duration: "٣٠ دقائق") // First Audio
                 audioOption(title: "الصوت الثاني", duration: "١٥ دقائق") // Second Audio
                 audioOption(title: "الصوت الثالث", duration: "٧ دقائق") // Third Audio
             }
-            .padding() // Adjust the top padding as necessary
+            .padding(.horizontal) // Horizontal padding for alignment
         }
         .edgesIgnoringSafeArea(.all) // Fill the entire screen
     }
@@ -72,24 +65,26 @@ struct Yoga: View {
     // Helper function for audio options
     private func audioOption(title: String, duration: String) -> some View {
         HStack {
-            Text(title)
-                .foregroundColor(.white)
-                .font(.system(size: 30))
-                .padding(.leading, 20)
+            VStack(alignment: .leading) {
+                Text(title)
+                    .foregroundColor(.white)
+                    .font(.system(size: 30))
+                
+                Text(duration)
+                    .foregroundColor(.white)
+                    .font(.system(size: 15))
+                    .padding(.leading, 100.0)
+            }
+            .padding(.leading, 95.0) // Align with the image
             
-            Spacer() // Use Spacer to push elements to the sides
+            Spacer() // Pushes the image to the right
             
-            Text(duration)
-                .foregroundColor(.white)
-                .font(.system(size: 15))
-                .padding(.trailing, 10)
-
             Image(systemName: "headphones.circle.fill")
                 .resizable()
                 .foregroundColor(.white)
                 .frame(width: 50, height: 50)
                 .scaledToFit()
-                .padding(.leading, 20)
+                .padding(.trailing, 20) // Add some padding to the right
         }
         .padding(.vertical, 10) // Vertical padding for each audio option
     }
