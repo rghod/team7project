@@ -66,154 +66,120 @@ struct ContentViewPage2: View {
 
     var body: some View {
         ZStack {
+            CustomBackgroundPage2() // Your custom background
             
-            
-            //back navigation
-            Spacer()
-            .navigationBarBackButtonHidden(true)
-            .toolbar(content: {
-            ToolbarItem (placement: .navigationBarLeading)  {
-            Button(action: {
-                               presentationMode.wrappedValue.dismiss()
-            }, label: {
-            Image(systemName: "arrow.left")
-            .foregroundColor(.white)
-            .dynamicTypeSize(.xxLarge)
-                
-            })
-            }
-            })
-            //back navigation
-            
-            
-            CustomBackground() // Use your custom background
-                
-
-
-            VStack{
+            VStack {
                 Text("ينبغي عليك محاولة النوم في أحد الأوقات التالية:")
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 28))
-                    .padding(.horizontal,15)
-                    .background(Color.init(hex: "0F133C"))
+                    .padding(.horizontal, 15)
+                    .background(Color(hex: "0F133C"))
                     .frame(width: 350, height: 100)
                 
-//                Text("Selected Time: \(formattedTime(selectedTime))") // Display selected time
-//                                    .foregroundColor(.white)
-//                                    .multilineTextAlignment(.center)
-//                                    .font(.system(size: 28))
-//                                    .padding(.horizontal, 15)
-//                                    .background(Color(hex: "0F133C"))
-//                                    .frame(width: 350, height: 100)
-                
                 ScrollView {
-                    
-                    VStack{
-                        HStack{
-                            ZStack{
-                                Circle()
-                                    .fill(Color.init(hex: "261462"))
-                                    .frame(width: 60, height: 60)
-                                    .position(x: 330, y: 70)
-                                Text("1")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 25))
-                                    .position(x: 330, y: 70)
-                            }
-                            Text("11:00 مساءً لمدة ست دورات  تسع ساعات من النوم.")
+                    VStack {
+                        // First time: Add 3 hours
+                        let firstTime = addTime(selectedTime, hours: 4, minutes: 0)
+                        HStack {
+                            Text("دورتان من النوم، لمده ثلاث ساعات")
                                 .foregroundColor(.white)
-                                .font(.system(size: 17))
-                                .position(x: -20, y: 70)
-                                .multilineTextAlignment(.trailing)
-                        }
-                        .frame(height: 100)
-                        
-                        HStack{
-                            ZStack{
-                                Circle()
-                                    .fill(Color.init(hex: "261462"))
-                                    .frame(width: 60, height: 60)
-                                    .position(x: 330, y: 70)
-                                Text("2")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 25))
-                                    .position(x: 330, y: 70)
-                            }
-                            Text("11:00 مساءً لمدة ست دورات  تسع ساعات من النوم.")
-                                .foregroundColor(.white)
-                                .font(.system(size: 17))
-                                .position(x: -20, y: 70)
-                                .multilineTextAlignment(.trailing)
-                        }
-                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                        
-                        HStack{
-                            ZStack{
-                                Circle()
-                                    .fill(Color.init(hex: "261462"))
-                                    .frame(width: 60, height: 60)
-                                    .position(x: 330, y: 70)
-                                Text("3")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 25))
-                                    .position(x: 330, y: 70)
-                            }
-                            Text("11:00 مساءً لمدة ست دورات  تسع ساعات من النوم.")
-                                .foregroundColor(.white)
-                                .font(.system(size: 17))
-                                .position(x: -20, y: 70)
-                                .multilineTextAlignment(.trailing)
-                        }
-                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                        
-                        HStack{
-                            ZStack{
-                                Circle()
-                                    .fill(Color.init(hex: "261462"))
-                                    .frame(width: 60, height: 60)
-                                    .position(x: 330, y: 70)
-                                Text("4")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 25))
-                                    .position(x: 330, y: 70)
-                            }
-                            Text("11:00 مساءً لمدة ست دورات  تسع ساعات من النوم.")
-                                .foregroundColor(.white)
-                                .font(.system(size: 17))
-                                .position(x: -20, y: 70)
-                                .multilineTextAlignment(.trailing)
-                        }
-                    }
 
+                            displayTime(index: 1, time: firstTime)
+                        }.padding(.trailing,20);
+
+                        // Second time: Add 4 hours and 30 minutes
+                        let secondTime = addTime(selectedTime, hours: 5, minutes: 30)
+                        HStack {
+                            Text("ثلاث دورات من النوم، لمده اربع ساعات ونصف")
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.trailing)
+                                .padding(.top,25)
+                            
+                            displayTime(index: 2, time: secondTime)
+                        };
+
+                        // Third time: Add 6 hours
+                        let thirdTime = addTime(selectedTime, hours: 7, minutes: 0)
+                        
+                        HStack {
+                            Text("اربع دورات من النوم، لمده سته ساعات من النوم")
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.trailing)
+                                .padding(.top,25)
+                            
+                            displayTime(index: 3, time: thirdTime)
+                                .padding(.trailing,30)
+                        };
+                        
+
+                        // Fourth time: Add 7 hours and 30 minutes
+                        let fourthTime = addTime(selectedTime, hours: 8, minutes: 30)
+                        HStack {
+                            Text("خمس دورات من النوم، لمده سبع ساعات ونصف")
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.trailing)
+                                .padding(.top,25)
+                            
+                            displayTime(index: 4, time: fourthTime)
+                        };
+
+                    }
                 }
-                
+
                 Text("يرجى الأخذ في الاعتبار أن الإنسان العادي يستغرق أربعة عشر دقيقة للنوم، لذا خطط وفقًا لذلك!")
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 18))
-                    .padding(.horizontal,45)
-                    .padding(.bottom,30)
-            }.padding(.top,40)
-            
+                    .padding(.horizontal, 45)
+                    .padding(.bottom, 30)
+            }
+            .padding(.top, 40)
         }
     }
-    
-    private func formattedTime(_ time: TimeSelection) -> String {
-           let hour = time.isAM ? time.hour : (time.hour % 12) + 12
-           let formatter = DateFormatter()
-           formatter.dateFormat = "hh:mm a"
-           let dateComponents = DateComponents(hour: hour+1, minute: time.minute)
-           let date = Calendar.current.date(from: dateComponents) ?? Date()
-           return formatter.string(from: date)
-       }
+
+    // Function to add hours and minutes to a given time
+    private func addTime(_ time: TimeSelection, hours: Int, minutes: Int) -> TimeSelection {
+        var newHour = time.hour + hours
+        var newMinute = time.minute + minutes
+        
+        // Adjust minutes
+        if newMinute >= 60 {
+            newHour += newMinute / 60
+            newMinute = newMinute % 60
+        }
+
+        // Adjust hour to be in the range of 1-12
+        newHour = ((newHour - 1) % 12) + 1
+        
+        return TimeSelection(hour: newHour, minute: newMinute, isAM: time.isAM)
+    }
+
+    // Helper function to display the time
+    private func displayTime(index: Int, time: TimeSelection) -> some View {
+        HStack {
+            Text("\(time.hour):\(String(format: "%02d", time.minute))")
+                .foregroundColor(.white)
+                .font(.system(size: 17))
+                .multilineTextAlignment(.trailing)
+            ZStack {
+                Circle()
+                    .fill(Color(hex: "261462"))
+                    .frame(width: 55, height: 55)
+                Text("\(index)")
+                    .foregroundColor(.white)
+                    .font(.system(size: 25))
+            }
+            .padding(.leading,5)
+        }
+        .frame(height: 100)
+    }
 }
 
-//-------------------------------------------------------------------------------------------------------------
 
+// Preview provider
 struct ContentView_PreviewsPage2: PreviewProvider {
     static var previews: some View {
         ContentViewPage2(selectedTime: TimeSelection(hour: 10, minute: 30, isAM: true))
     }
 }
-
