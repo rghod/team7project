@@ -1,5 +1,11 @@
 import SwiftUI
 
+// Model for mood data
+struct MoodData: Codable {
+    var emoji: String
+    var timestamp: Date
+}
+
 struct ContentView: View {
     var body: some View {
         NavigationView {
@@ -13,7 +19,11 @@ struct ContentView: View {
 struct ProjectMainPage1: View {
     @State private var selectedDate: Int? = nil
     @State private var selectedEmoji: String? = nil
-    @State private var emojiOnDate: [Int: (emoji: String, timestamp: Date)] = [:]
+    @State private var emojiOnDate: [Int: MoodData] = [:]
+
+    init() {
+        loadMoodData()
+    }
 
     var body: some View {
         ZStack {
@@ -71,19 +81,19 @@ struct ProjectMainPage1: View {
                 // Horizontal ScrollView with buttons
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
-                        NavigationLink(destination: ContentViewS()) {
+                        NavigationLink(destination: SleepView()) {
                             ButtonView(title: "النوم", iconName: "moon.fill")
                         }
                         NavigationLink(destination: MeditationView()) {
                             ButtonView(title: "التأمل", iconName: "leaf.fill")
                         }
-                        NavigationLink(destination: Maram()) {
+                        NavigationLink(destination: BreathingView()) {
                             ButtonView(title: "التنفس", iconName: "wind")
                         }
                         NavigationLink(destination: PageFourView()) {
                             ButtonView(title: "التركيز", iconName: "eye.fill")
                         }
-                        NavigationLink(destination: Nujud()) {
+                        NavigationLink(destination: PageFiveView()) {
                             ButtonView(title: "الجسدي", iconName: "figure.walk")
                         }
                     }
@@ -95,15 +105,19 @@ struct ProjectMainPage1: View {
                 Text("كيف مزاجك اليوم؟")
                     .font(.title2)
                     .foregroundColor(.white)
+                    .padding(.bottom, 5)
 
                 // Mood emojis
                 HStack(spacing: 20) {
                     ForEach(["🥰", "😊", "😐", "😢", "😠"], id: \.self) { emoji in
                         Button(action: {
+                            // Automatically set the selected date to today when an emoji is selected
+                            selectedDate = Calendar.current.component(.day, from: Date())
                             if let selectedDate = selectedDate {
                                 if canUpdateMood(for: selectedDate) {
-                                    emojiOnDate[selectedDate] = (emoji, Date())
+                                    emojiOnDate[selectedDate] = MoodData(emoji: emoji, timestamp: Date())
                                     selectedEmoji = emoji
+                                    saveMoodData() // Save data after updating
                                 } else {
                                     // Inform the user they cannot update the mood
                                     print("You can only update the mood for tomorrow.")
@@ -130,6 +144,19 @@ struct ProjectMainPage1: View {
             return timeSinceLastUpdate > 86400 // 24 hours in seconds
         }
         return true // Allow mood setting for the first time
+    }
+
+    private func saveMoodData() {
+        if let encoded = try? JSONEncoder().encode(emojiOnDate) {
+            UserDefaults.standard.set(encoded, forKey: "moodData")
+        }
+    }
+
+    private func loadMoodData() {
+        if let data = UserDefaults.standard.data(forKey: "moodData"),
+           let decoded = try? JSONDecoder().decode([Int: MoodData].self, from: data) {
+            emojiOnDate = decoded
+        }
     }
 }
 
@@ -193,40 +220,22 @@ struct PageFiveView: View {
 
 // Calendar View
 struct CalendarView: View {
-    let daysInWeek = ["ح", "ن", "ث", "ع", "خ", "ج", "س"]
-    let daysInMonth: [String] = {
-        var days = [String]()
-        for day in 1...30 {
-            days.append("\(day)")
-        }
-        return days
-    }()
-
     @Binding var selectedDate: Int?
-    var emojiOnDate: [Int: (emoji: String, timestamp: Date)]
+    var emojiOnDate: [Int: MoodData]
 
     var body: some View {
         VStack {
-            Text("هذا الشهر")
+            Text(getMonthName()) // Display the month name
                 .font(.title)
                 .foregroundColor(.white)
                 .padding(.bottom, 20.0)
 
-            // Days of the week
-            HStack {
-                ForEach(daysInWeek, id: \.self) { day in
-                    Text(day)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .font(.headline)
-                }
-            }
-
             // Days of the month
+            let daysInMonth = getDaysInMonth() // Get the number of days in the current month
             let columns = Array(repeating: GridItem(.flexible()), count: 7)
             LazyVGrid(columns: columns, spacing: 5) {
                 ForEach(daysInMonth.indices, id: \.self) { index in
-                    let day = index + 1
+                    let day = daysInMonth[index]
                     let emoji = emojiOnDate[day]?.emoji ?? ""
                     Button(action: {
                         selectedDate = day
@@ -255,8 +264,27 @@ struct CalendarView: View {
         .background(Color(hex: "#0F133C").opacity(0.8))
         .cornerRadius(10)
     }
+
+    private func getDaysInMonth() -> [Int] {
+        let calendar = Calendar.current
+        let date = Date()
+        _ = calendar.component(.month, from: date)
+        _ = calendar.component(.year, from: date)
+
+        // Get the range of days for the current month
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        return Array(range)
+    }
+
+    private func getMonthName() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ar") // Set the locale to Arabic
+        dateFormatter.dateFormat = "MMMM" // Full month name
+        return dateFormatter.string(from: Date())
+    }
 }
 
+// Preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
