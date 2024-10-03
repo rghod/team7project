@@ -81,19 +81,19 @@ struct ProjectMainPage1: View {
                 // Horizontal ScrollView with buttons
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
-                        NavigationLink(destination: SleepView()) {
+                        NavigationLink(destination: ContentViewS()) {
                             ButtonView(title: "النوم", iconName: "moon.fill")
                         }
                         NavigationLink(destination: MeditationView()) {
                             ButtonView(title: "التأمل", iconName: "leaf.fill")
                         }
-                        NavigationLink(destination: BreathingView()) {
+                        NavigationLink(destination: Maram()) {
                             ButtonView(title: "التنفس", iconName: "wind")
                         }
                         NavigationLink(destination: PageFourView()) {
                             ButtonView(title: "التركيز", iconName: "eye.fill")
                         }
-                        NavigationLink(destination: PageFiveView()) {
+                        NavigationLink(destination: Nujud()) {
                             ButtonView(title: "الجسدي", iconName: "figure.walk")
                         }
                     }
