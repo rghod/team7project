@@ -81,6 +81,7 @@ struct Stretch: View {
                     """)
                         .foregroundColor(.white)
                         .font(.system(size: 20))
+                        .multilineTextAlignment(.trailing)
                         .padding(.bottom, 10.0)
                     }
                 
