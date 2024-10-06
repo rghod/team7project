@@ -43,53 +43,48 @@ struct Yoga: View {
                     .fill(isTransparent ? Color.white.opacity(0.5) : Color.yellow) // Transparent or yellow
                     .frame(width: size, height: size) // Set size
                     .position(positions[index]) // Use predefined positions
-                Text("تمارين اليوغا")
-                    .foregroundColor(.white)
-                    .font(.system(size: 40))
-                    .padding(.bottom, 580)
             }
 
             VStack {
-            
-
-                // Audio options
-                audioOption(title: "الصوت الأول", duration: "٣٠ دقائق") // First Audio
-                audioOption(title: "الصوت الثاني", duration: "١٥ دقائق") // Second Audio
-                audioOption(title: "الصوت الثالث", duration: "٧ دقائق") // Third Audio
+                Text("أهلًا بك في عالم اليوغا")
+                    .foregroundColor(.white)
+                    .font(.system(size: 40))
+                    .padding(.bottom, 60.0)
+                
+                Text("قبل البدء باليوغا:")
+                    .foregroundColor(.white)
+                    .font(.system(size: 30))
+                    .padding(.bottom, 500.0)
+            }
+                
+                VStack {
+                    
+                    ScrollView {
+                        Text("""
+                    - قم بإختيار المكان المناسب: ابحث عن مكان مريح يساعدك على التركيز. يفضل ان يكون ما بين الطبيعة أو حتى في منزلك. 
+                    - البس ملابس ملائمة: قم بإرتداء ملابس مريحة تسمح لك بالحركة بسهولة. يفضل ان تكون ملابس قادرة على امتصاص العرق.
+                    - الإحماء: قبل البدء باليوغا، قم بتجهيز جسدك عن طريق الاحماء لتقليل خطر الإصابة.
+                    - تنفس بعمق: حاول التركيز على طريقة خروج ودخول الهواء وتطبيق تقنيات التنفس الصحيحة اثناء التمرين. 
+                    - ابدأ بالاساسيات: ابتعد عن الوضعيات المعقدة وابدأ بالتقنيات الأساسية والبسيطة
+                    - استمع إلى جسدك: الهدف من اليوغا هو تعزيز الاسترخاء لذلك توقف عند الشعور بعدم الراحة
+                    - خصص وقت ثابت للإنتظام: استمر على تمرين اليوغا بشكل يومي حتى وان كانت المدة قصيرة
+                    - كن صبورًا: لا تتوقع النتائج بشكل فوري وكن صبورًا مع نفسك خلال هذه الرحلة.
+                    - استمتع بالعملية: استشعر اللحظة واعتبرها تجربة للتواصل مع ذاتك أكثر من انها مجرد تمرين.  
+                    """)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
+                        .padding(.bottom, 10.0)
+                    }
+                
+                    .padding(.top, 300.0)
             }
             .padding(.horizontal) // Horizontal padding for alignment
         }
         .edgesIgnoringSafeArea(.all) // Fill the entire screen
     }
-
-    // Helper function for audio options
-    private func audioOption(title: String, duration: String) -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(title)
-                    .foregroundColor(.white)
-                    .font(.system(size: 30))
-                
-                Text(duration)
-                    .foregroundColor(.white)
-                    .font(.system(size: 15))
-                    .padding(.leading, 100.0)
-            }
-            .padding(.leading, 95.0) // Align with the image
-            
-            Spacer() // Pushes the image to the right
-            
-            Image(systemName: "headphones.circle.fill")
-                .resizable()
-                .foregroundColor(.white)
-                .frame(width: 50, height: 50)
-                .scaledToFit()
-                .padding(.trailing, 20) // Add some padding to the right
-        }
-        .padding(.vertical, 10) // Vertical padding for each audio option
-    }
 }
 
+// Preview
 #Preview {
     Yoga()
 }

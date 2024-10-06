@@ -15,8 +15,6 @@ import SwiftUI
 struct Walking: View {
     var body: some View {
         ZStack {
-            
-                
             // Full background color
             Color(hex: "0F133C") // Custom color using hex
             
@@ -47,7 +45,6 @@ struct Walking: View {
                 CGPoint(x: 330, y: 150),
                 CGPoint(x: 300, y: 30)
             ]
-            
 
             // Circles in the background
             ForEach(0..<positions.count, id: \.self) { index in
@@ -58,53 +55,44 @@ struct Walking: View {
                     .fill(isTransparent ? Color.white.opacity(0.5) : Color.yellow) // Transparent or yellow
                     .frame(width: size, height: size) // Set size
                     .position(positions[index]) // Use predefined positions
-                Text("تمارين المشي")
+            }
+
+            VStack {
+                Text("أهلًا بك في عالم المشي")
                     .foregroundColor(.white)
                     .font(.system(size: 40))
-                    .padding(.bottom, 580)
+                    .padding(.bottom, 60.0)
                 
+                Text("قبل البدء بالمشي:")
+                    .foregroundColor(.white)
+                    .font(.system(size: 30))
+                    .padding(.bottom, 500.0)
             }
-          
-            
-            
-            VStack {
-            
-
-                // Audio options
-                audioOption(title: "الصوت الأول", duration: "٣٠ دقائق") // First Audio
-                audioOption(title: "الصوت الثاني", duration: "١٥ دقائق") // Second Audio
-                audioOption(title: "الصوت الثالث", duration: "٧ دقائق") // Third Audio
+                
+                VStack {
+                    
+                    ScrollView {
+                        Text("""
+                    - قم بإختيار الحذاء الملائم: ارتدِ حذاء رياضي مريح يساعد على الحركة.
+                    - اختر المكان المناسب: ابحث عن مكان آمن ومريح للمشي. يفضل في الممرات المخصصة أو الحدائق بسبب وجود الطبيعة.
+                    - حدد هدفك: قبل البدء حدد المدة والمسافة التي ترغب بقطعها.
+                    - قم بالإحماء: قم بتمارين بسيطة قبل البدء مثل التمدد.
+                    - ابدأ ببطئ: عند المشي، البدأ بوتيرة منخفضة وزد السرعة تدريجيًا.
+                    - تنفس بشكل صحيح: تنفس بعمق وانتظام خلال المشي لرفع مستوى الاكسجين في جسمك.
+                    - حافظ على وضعية جسدك: امش بشكل مستقيم مع رفع رأسك والكتفين واجعل ذراعيك مرنة.
+                    - شرب الماء: اشرب الماء قبل، وخلال، وبعد المشي.
+                    - استمتع بالتجربة: استمتع بالمشي واستكشف الطبيعة والأماكن من حولك.
+                    """)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
+                        .padding(.bottom, 10.0)
+                    }
+                
+                    .padding(.top, 300.0)
             }
             .padding(.horizontal) // Horizontal padding for alignment
         }
         .edgesIgnoringSafeArea(.all) // Fill the entire screen
-    }
-
-    // Helper function for audio options
-    private func audioOption(title: String, duration: String) -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(title)
-                    .foregroundColor(.white)
-                    .font(.system(size: 30))
-                
-                Text(duration)
-                    .foregroundColor(.white)
-                    .font(.system(size: 15))
-                    .padding(.leading, 100.0)
-            }
-            .padding(.leading, 95.0) // Align with the image
-            
-            Spacer() // Pushes the image to the right
-            
-            Image(systemName: "headphones.circle.fill")
-                .resizable()
-                .foregroundColor(.white)
-                .frame(width: 50, height: 50)
-                .scaledToFit()
-                .padding(.trailing, 20) // Add some padding to the right
-        }
-        .padding(.vertical, 10) // Vertical padding for each audio option
     }
 }
 

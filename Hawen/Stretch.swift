@@ -11,8 +11,6 @@ import SwiftUI
 struct Stretch: View {
     var body: some View {
         ZStack {
-            
-                
             // Full background color
             Color(hex: "0F133C") // Custom color using hex
             
@@ -43,7 +41,6 @@ struct Stretch: View {
                 CGPoint(x: 330, y: 150),
                 CGPoint(x: 300, y: 30)
             ]
-            
 
             // Circles in the background
             ForEach(0..<positions.count, id: \.self) { index in
@@ -54,53 +51,47 @@ struct Stretch: View {
                     .fill(isTransparent ? Color.white.opacity(0.5) : Color.yellow) // Transparent or yellow
                     .frame(width: size, height: size) // Set size
                     .position(positions[index]) // Use predefined positions
-                Text("تمارين التمدد")
+            }
+
+            VStack {
+                Text("أهلًا بك في عالم التمدد")
                     .foregroundColor(.white)
                     .font(.system(size: 40))
-                    .padding(.bottom, 580)
+                    .padding(.bottom, 60.0)
                 
+                Text("قبل البدء بتمارين التمدد:")
+                    .foregroundColor(.white)
+                    .font(.system(size: 30))
+                    .padding(.bottom, 500.0)
             }
-            
-            VStack {
-            
-
-                // Audio options
-                audioOption(title: "الصوت الأول", duration: "٣٠ دقائق") // First Audio
-                audioOption(title: "الصوت الثاني", duration: "١٥ دقائق") // Second Audio
-                audioOption(title: "الصوت الثالث", duration: "٧ دقائق") // Third Audio
+                
+                VStack {
+                    
+                    ScrollView {
+                        Text("""
+                    - اختر الوقت المناسب: يفضل ممارسة التمدد بعد التمارين الرياضية أو في الصباح. 
+                    - حدد المناطق المستهدفة: حدد المناطق التي ترغب في تمددها وقم بالتمرين المناسب لكل منطقة. 
+                    - احمِ جسمك: ابدأ بالإحماء أولًا لتسخين عضلاتك. 
+                    - ركز على الوضعيات الصحيحة: لتجنب الإصابات والحصول على أفضل النتائج تأكد من ان وضعية جسدك صحيحة.
+                    - تنفس بعمق: تنفس بعمق وإنتظام خلال التمدد لزيادة تدفق الدم إلى عضلاتك.
+                    - استمع لجسدك: يجب ان يكون التمدد مريح لذلك إذا شعرت ببعض من الآلم توقف فورًا عن التمدد. 
+                    - تمرن ببطئ: قم بتمارين التمدد ببطئ لتجنب الشد العضلي.
+                    - خصص وقت ثابت للإنتظام: استمر على تمرين التمدد بشكل يومي حتى وان كانت المدة قصيرة.
+                    - استمتع بالعملية: استمتع بالتجربة واعتبر تمارين التمدد جزء أساسي من يومك للاسترخاء والتخلص من التوتر. 
+                    """)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
+                        .padding(.bottom, 10.0)
+                    }
+                
+                    .padding(.top, 300.0)
             }
             .padding(.horizontal) // Horizontal padding for alignment
         }
         .edgesIgnoringSafeArea(.all) // Fill the entire screen
     }
-
-    // Helper function for audio options
-    private func audioOption(title: String, duration: String) -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(title)
-                    .foregroundColor(.white)
-                    .font(.system(size: 30))
-                
-                Text(duration)
-                    .foregroundColor(.white)
-                    .font(.system(size: 15))
-                    .padding(.leading, 100.0)
-            }
-            .padding(.leading, 95.0) // Align with the image
-            
-            Spacer() // Pushes the image to the right
-            
-            Image(systemName: "headphones.circle.fill")
-                .resizable()
-                .foregroundColor(.white)
-                .frame(width: 50, height: 50)
-                .scaledToFit()
-                .padding(.trailing, 20) // Add some padding to the right
-        }
-        .padding(.vertical, 10) // Vertical padding for each audio option
-    }
 }
+
 
 
 #Preview {
